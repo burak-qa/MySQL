@@ -68,5 +68,15 @@ drop column sirket;
 alter table isciler
 modify ulke_adi varchar(30) not null;
 
+-- maas kisitlamasi ekle
+alter table isciler
+ADD CONSTRAINT maas CHECK (maas>=3000);
 
-
+-- =======================
+  -- maas limit kisitlamasi ekle
+  
+  alter table isciler add constraint  check (maas > 3499);
+     -- Maas alt limit kisitlamasi atadik.
+    -- kisitlama atadiktan sonra maasin 3500 altinda olmasi sebebiyle
+    -- alttaki veriyi giremeyiz 
+    INSERT INTO isciler VALUES(123452310, 'Hatice Sahin', 'Bursa', 3000, null);

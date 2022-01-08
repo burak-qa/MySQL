@@ -1,0 +1,1514 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green176\blue240;\red255\green0\blue0;\red237\green125\blue49;
+\red112\green48\blue160;\red192\green0\blue0;\red146\green208\blue80;\red0\green176\blue80;\red255\green192\blue0;
+\red68\green114\blue196;\red123\green123\blue123;\red244\green176\blue131;\red0\green112\blue192;\red112\green173\blue71;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c69020\c94118;\csgenericrgb\c100000\c0\c0;\csgenericrgb\c92941\c49020\c19216;
+\csgenericrgb\c43922\c18824\c62745;\csgenericrgb\c75294\c0\c0;\csgenericrgb\c57255\c81569\c31373;\csgenericrgb\c0\c69020\c31373;\csgenericrgb\c100000\c75294\c0;
+\csgenericrgb\c26667\c44706\c76863;\csgenericrgb\c48235\c48235\c48235;\csgenericrgb\c95686\c69020\c51373;\csgenericrgb\c0\c43922\c75294;\csgenericrgb\c43922\c67843\c27843;
+}
+{\info
+{\author ipek}}\margl1417\margr1417\margb1417\margt1417\vieww21220\viewh14980\viewkind1\viewscale184
+\deftab720
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\fs22 \cf0                         TABLO OLU\uc0\u350 TURMA  (CRUD - Create)                  \
+\
+CREATE TABLE student \
+(    std_id VARCHAR(4),     \cf2 String gibi  max 4 karakter\cf0 \
+    std_name VARCHAR(20),\
+    std_age NUMBER       \cf2 int, double ...gibi\cf0 );\
+/* ========================================================= \
+                    VER\uc0\u304  G\u304 R\u304 \u350 \u304  \
+INSERT INTO student VALUES('1001', 'MEHMET AL\uc0\u304 ', 25);\
+/* ========================================================= \
+                    PAR\'c7ALI VER\uc0\u304  G\u304 R\u304 \u350 \u304  \
+-- NOT: Veri giri\uc0\u351 i yap\u305 lmayan de\u287 i\u351 kenlere NULL atan\u305 r.\
+INSERT INTO student(
+\f1\b \cf2 std_id,std_name
+\f0\b0 \cf0 ) VALUES('1005','MUSTAFA KARAR');\
+\cf2 (VALUES ten \'f6nce girece\uc0\u287 in b\'f6l\'fcmleri belirtiyorsun)\
+\cf0 /* ========================================================= \
+          TABLODAN VER\uc0\u304  SORGULAMA  (CRUD - Read) \
+SELECT * FROM 
+\f1\b \cf2 student
+\f0\b0 ;    (tablonun ad\uc0\u305  yaz\u305 l\u305 r)\cf0 \
+/* ========================================================= \
+                TABLO S\uc0\u304 LME  (CRUD - Drop )\
+     DROP TABLE 
+\f1\b \cf2 student
+\f0\b0 \cf0 ;  \cf2 (tablo ad\uc0\u305 )\
+\cf0 /*========================================================= \
+         \
+\
+\
+\
+\
+  CONSTRAINTS - KISITLAMALAR\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     NOT NULL - Bir S\'fctunun  NULL i\'e7ermemesini garanti eder. \
+    UNIQUE - Bir s\'fctundaki t\'fcm de\uc0\u287 erlerin BENZERS\u304 Z olmas\u305 n\u305  garanti eder.  \
+    PRIMARY KEY - Bir s\'fct\'fcn\'fcn NULL i\'e7ermemesini ve s\'fctundaki verilerin \
+                  BENZERS\uc0\u304 Z olmas\u305 n\u305  garanti eder.(NOT NULL ve UNIQUE birle\u351 imi gibi)\
+   FOREIGN KEY - Ba\uc0\u351 ka bir tablodaki Primary Key\'92i referans g\'f6stermek i\'e7in kullan\u305 l\u305 r. \
+                  B\'f6ylelikle, tablolar aras\uc0\u305 nda ili\u351 ki kurulmu\u351  olur. \
+    CHECK - Bir sutundaki t\'fcm verilerin belirlenen \'f6zel bir \uc0\u351 art\u305  sa\u287 lamas\u305 n\u305  garanti eder. \
+    DEFAULT - Herhangi bir de\uc0\u287 er atanamad\u305 \u287 \u305 nda Ba\u351 lang\u305 \'e7 de\u287 erinin atanmas\u305 n\u305  sa\u287 lar.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0  ===============================================================================   \
+      KISITLAMALAR ORNEK1 ( PRIMARY KEY,UNIQUE ve NOT NULL kullan\uc0\u305 m\u305 )   \
+    CREATE TABLE calisanlar\
+    (   id CHAR(5) 
+\f1\b \cf2 PRIMARY KEY,  
+\f0\b0 (art\uc0\u305 k id NOT NULL ve UNIQUE)\cf0 \
+        isim VARCHAR2(50) \cf2 UNIQUE,\cf0 \
+        maas NUMBER(5) \cf2 NOT NULL\cf0 ,\
+        ise_baslama DATE  );\
+            \
+    -- 10001 id'li calisani silme (\uc0\u304 leride bu konuyu g\'f6rece\u287 iz).\
+    \cf4 DELETE 
+\f1\b \cf2 calisanlar
+\f0\b0 \cf0    \cf2 (\'e7al\uc0\u305 \u351 anlar tablosunda id si 10001 olan \cf5 yerdeki veriyi\cf2  \cf4 sil\cf2 )\
+\cf0     \cf5 WHERE\cf0  
+\f1\b \cf2 id
+\f0\b0 \cf0 =
+\f1\b \cf2 '10001'
+\f0\b0 \cf0 ;\
+----------------------------------------------------------------\
+-- KISITLAMALAR ORNEK2 \'96( PRIMARY KEY ALTERNAT\uc0\u304 F Y\'d6NTEM)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3 -- Bu y\'f6ntemde K\uc0\u305 s\u305 tlamaya istedi\u287 imiz ismi atayabiliriz \
+-- ve DISABLE komutuyla istedi\uc0\u287 imizde pasif hale getirebiliriz. \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0     \
+\
+CREATE TABLE calisanlar\
+    (    id CHAR(5), \
+        isim VARCHAR2(50) UNIQUE,\
+        maas NUMBER(5) NOT NULL,\
+        ise_baslama DATE,\
+ \cf5 CONSTRAINT \cf4 id_pk\cf0  \cf6 PRIMARY KEY\cf0 (\cf2 id\cf0 ) \cf7 --DISABLE\cf0    );\
+ ( \cf2 id yi \cf4 \{arka planda id_pk ismiyle\}\cf0  \cf6 (NOT NULL VE UN\uc0\u304 QUE)\cf0  \cf5 k\uc0\u305 s\u305 tla,  \cf0 istersen\cf5  \cf7 D\uc0\u304 SABLE ile k\u305 s\u305 tlamay\u305 \cf5  \cf7 iptal et\cf5  \cf0 )\
+----------------------------------------------------------------\
+-- KISITLAMALAR (ORNEK3 - FOREIGN KEY)\
+    CREATE TABLE adresler\
+    (   adres_id CHAR(5),               \cf6 \
+\cf0         sokak VARCHAR2(50),\
+        cadde VARCHAR2(30),\
+        sehir VARCHAR2(15),\
+        CONSTRAINT id_fk \cf8 FOREIGN\cf0  \cf8 KEY\cf0 (\cf7 adres\cf0 _\cf7 id\cf0 ) \cf9 REFERENCES calisanlar(id)\cf0    );\
+(\cf9 cal\uc0\u305 \u351 anlar tablosundaki id yi referans alarak\cf0  adresler tablosundaki \cf7 adres_id\cf0  ile \cf8 ba\uc0\u287 lant\u305  \{FOREIGN\cf0  \cf8 KEY\} \cf0 kur, ayn\uc0\u305  olanlar\u305 n bilgilerini birle\u351 mi\u351  olarak ayn\u305  sat\u305 rda yazd\u305 rmaya haz\u305 rla,\'e7\'fcnk\'fc FK ile birle\u351 tirilen tablolardaki t\'fcm verileri \'e7ekmek i\'e7in JOIN \u304 \u351 lemi yapmak gerekir. Bu konuyu sonra g\'f6rece\u287 iz.) bunu CONSTRAINT ile sat\u305 r sonunda yapm\u305 \u351 \u305 z, \cf6 CONSTRAINT kullanmadan adres_id s\'fctununda da yapabilirdik\cf0 \
+    \
+\cf2     
+\f1\b \cf3 -- FK'ye null de\uc0\u287 eri atanabilir. \
+
+\f0\b0 \cf2     INSERT INTO adresler VALUES('','A\uc0\u287 a Sok', '30.Cad.','Antep');\
+    -- Parent tabloda olmayan bir id ile ekleme yap\uc0\u305 lamaz. Yani parent cal\u305 sanlar tablosunda 10004 yoksa a\u351 a\u287 \u305 daki gibi ekleme yapmaz\
+    INSERT INTO adresler VALUES('10004','Gel Sok', '60.Cad.','Van');\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3      -- Child tablo silinmeden parent tablo silinemez.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0     DROP TABLE calisanlar;  \cf2 (cal\uc0\u305 sanlar parent old i\'e7in \'f6nce bu yap\u305 lamaz)\
+\cf0     DROP TABLE adresler;   \cf2 (\'f6nce child silinmeli)\cf0 \
+    SELECT * FROM \cf2 calisanlar, adresler\cf0  \cf6 WHERE calisanlar.id = adresler.adres_id\cf0 ;  \cf2 ( cal\uc0\u305 sanlar ve adresler tablosunda\cf0  \cf6 calisanlar daki id nin, adresler deki adres_id ye e\uc0\u351 it olan verileri\cf0  yazd\uc0\u305 r)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3 \
+\
+\
+\
+  \cf0 /* ======================= SELECT - WHERE ==================================*/\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3    Verileri SELECT komutu ile veritaban\uc0\u305 ndan \'e7ekerken filtreleme yapmak i\'e7in \
+   SELECT ile birlikte WHERE komutu kullan\uc0\u305 labilir. \
+   SELECT sut\'fcn1, sut\'fcn2\
+   FROM  tablo_ad\uc0\u305 \u8232    WHERE ko\u351 ul;\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 -----------------------------------------------------------------------------\
+  ORNEK1: S\uc0\u305 nav notu 80'den b\'fcy\'fck olan \'f6\u287 rencilerin t\'fcm bilgilerini listele\
+  SELECT \cf10 *\cf0  \cf3 FROM ogrenciler\cf0  \
+ \cf9 WHERE sinav_notu>80\cf0 ;  (\cf3 \'f6\uc0\u287 renciler tablosundan\cf0  \cf9 sinav_notu 80 den b\'fcy\'fck olan yerdeki \cf10 herkesi\cf9  \cf0 yazd\uc0\u305 r)\
+    \
+    -- notu 80 den b\'fcy\'fck olanlar\uc0\u305 n sadece isim ve not bilgilerini listeleme\
+    SELECT \cf8 isim,sinav_notu\cf0 \
+    \cf10 FROM ogrenciler \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     WHERE sinav_notu>80;\cf0    ( \cf10 \'f6\uc0\u287 renciler tablosundan\cf0  \cf3 sinav_notu 80 den b\'fcy\'fck olanlardaki\cf0  \cf8 isim ve sinav_notu \cf0 s\'fctunlar\uc0\u305 n\u305  yazd\u305 r)\
+ /* -----------------------------------------------------------------------------\
+  ORNEK2: Adresi Ankara olan \'f6\uc0\u287 rencilerin isim ve adres bilgilerini listele\
+    SELECT * FROM ogrenciler\
+    WHERE adres = 'Ankara';\
+/* ======================= SELECT - BETWEEN ==================================*/ \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     -- NOT:BETWEEN iki mant\uc0\u305 ksal ifade ile tan\u305 mlayabilece\u287 imiz durumlar\u305  \
+    -- tek komutla yazabilme imk\'e2n\uc0\u305  verir. Yazd\u305 \u287 \u305 m\u305 z 2 s\u305 n\u305 r da aral\u305 \u287 a dahildir.\
+  
+\f0\b0 \cf0 /* -----------------------------------------------------------------------------
+\f1\b \cf3 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0   ORNEK4: id'si 10002 ile 10005 aras\uc0\u305 nda olan personelin bilgilerini listele\
+    CREATE TABLE personel\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0 INSERT INTO personel VALUES('10001', 'Ahmet Aslan', 7000);\
+INSERT INTO personel VALUES ( '10002', 'Mehmet Y\uc0\u305 lmaz' ,12000);\
+INSERT INTO personel VALUES ('10003', 'Meryem ', 7215);                                              INSERT INTO personel VALUES ('10004', 'Veli Han', 5000);\
+INSERT INTO personel VALUES ('10005', 'Mustafa Ali', 5500);\
+INSERT INTO personel VALUES ('10005', 'Ay\uc0\u351 e Can', 4000);    \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0 \
+    --1.Y\'f6ntem (AND) \
+    SELECT * FROM personel\
+    WHERE id>='10002' AND id <='10005'; (id si 10002 den b\'fcy\'fck VE 10005 ten k\'fc\'e7\'fckleri se\'e7 )\
+    --2.Y\'f6ntem (BETWEEN)\
+    SELECT id, isim,maas \
+    FROM personel\
+ WHERE id BETWEEN '10002' AND '10005';   \
+ (id si 10002 ile 10005 aras\uc0\u305 ndakileri se\'e7, ALT VE \'dcST L\u304 M\u304 TLER DAH\u304 LD\u304 R.)\
+ /* -----------------------------------------------------------------------------\
+  ORNEK5: ismi Mehmet Y\uc0\u305 lmaz ile Veli Han aras\u305 ndaki olan personel bilgilerini \
+  listeleyiniz. personelin bilgilerini listele\
+    SELECT * FROM  personel\
+    WHERE isim BETWEEN 'Mehmet Y\uc0\u305 lmaz' AND 'Veli Han';\
+ /* -----------------------------------------------------------------------------\
+ \
+ ORNEK6: id\'92si 10002 - 10004 aras\uc0\u305 nda olmayan personelin bilgilerini listele\
+    SELECT * FROM personel\
+    WHERE id \cf2 NOT BETWEEN\cf0  '10002' AND '10004';  (\cf2 verilen aral\uc0\u305 kta olmas\u305 n..NOT BETWEEN\cf0 )\
+    \
+   /* ======================= SELECT - IN ======================================\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3    IN birden fazla mant\uc0\u305 ksal ifade ile tan\u305 mlayabilece\u287 imiz durumlar\u305  tek komutla yazabilme imk\'e2n\u305  verir\
+    SELECT sutun1,sutun2, ...\
+    FROM tablo_ad\uc0\u305 \
+    WHERE sutun_ad\uc0\u305  IN (deger1, deger2, ...);\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 /* -----------------------------------------------------------------------------\
+  ORNEK7: id\'92si 10001,10002 ve 10004 olan personelin bilgilerini listele\
+    --1.YOL:\
+    \cf2 SELECT id, isim, maas\
+\cf0     FROM personel\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf6     WHERE id = 10001\cf0  \cf3 OR\cf0  \cf6 id = 10002\cf0  \cf3 OR\cf0  \cf6 id = 10004\cf0 ; \
+ (\cf6 id si 10001\cf0  \cf3 VEYA\cf0  \cf6 10002 \cf3 VEYA\cf0  \cf6 10004 olan yerdekilerin\cf0  \cf2 id, isim , maas bilgilerini\cf0  yazd\uc0\u305 r)\
+     --2.YOL:\
+    SELECT id, isim, maas\
+    FROM personel\
+    \cf2 WHERE id\cf0  \cf3 IN\cf2 (10001, 10002, 10004)\cf0 ;   \
+    (\cf3 IN\cf0  => \cf2 id si 10001,10001,10004 yerdekileri\cf0  \cf3 beraberce\cf0  al\uc0\u305 p bunlar\u305 n id,isim,maas bilgilerini yazd\u305 r )\
+\
+\
+\
+\
+/* ======================= SELECT - LIKE ======================================\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+
+\f1\b \cf0     \cf3 NOT:LIKE anahtar kelimesi, sorgulama yaparken belirli patternleri \
+    kullanabilmemize olanak sa\uc0\u287 lar.\
+\cf0    \
+    \cf3 SELECT sut\'fcn1, sut\'fcn2,\'85\
+    FROM  tablo_ad\uc0\u305 \u8232     WHERE s\'fctun LIKE pattern\
+     PATTERN \uc0\u304 \'c7\u304 N (L\u304 KE tan sonra yaz\u305 lanlar Pattern)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     %    ---> 0 veya daha fazla karakteri belirtir. \
+    _    ---> Tek bir karakteri temsil eder.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 /* -----------------------------------------------------------------------------\cf3 \
+\cf0   ORNEK9:  ismi A harfi ile ba\uc0\u351 layanlar\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE \cf3 isim LIKE 'A
+\f1\b \cf2 %
+\f0\b0 \cf0 ';  \cf3 (ismi A ile ba\uc0\u351 las\u305 n\cf0  \cf2 sonras\uc0\u305  farketmez %)\cf0 \
+/* -----------------------------------------------------------------------------\
+  ORNEK10:  ismi n harfi ile bitenleri listeleyiniz\
+    SELECT * FROM personel\
+    WHERE \cf2 isim LIKE '%
+\f1\b \cf3 n'
+\f0\b0 \cf0 ;   \cf2 (isim istedi\uc0\u287 i gibi ba\u351 las\u305 n devam etsin\cf0  \cf3 n harfi ile bitsin\cf0 )\
+ /* -----------------------------------------------------------------------------\
+  ORNEK11:  isminin 2. harfi e olanlar\uc0\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE isim LIKE '_e%';\
+/* -----------------------------------------------------------------------------\
+  ORNEK12:  isminin 2. harfi e olup di\uc0\u287 er harflerinde y olanlar\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE isim LIKE 
+\f1\b \cf3 '_\cf8 e
+\f0\b0 \cf4 %y%\cf0 ';  (\cf3 1. Harfi _farketmez\cf0 , \cf8 2. Harfi e\cf0 , \cf4 aralarda y olsun ama gerisi farketmez\cf0 )\
+/* -----------------------------------------------------------------------------\
+ \
+ ORNEK13:  ismi A ile ba\uc0\u351 lamayanlar\u305  listeleyiniz \cf4 (NOT L\uc0\u304 KE)\
+\cf0     SELECT * FROM personel\
+    WHERE isim \cf4 NOT LIKE\cf0  'A%';\
+/* -----------------------------------------------------------------------------\
+  ORNEK15:  isminde a harfi olmayanlar\uc0\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE isim NOT LIKE \cf4 '%a%\cf0 ';  (\cf4 isim in hi\'e7biryerinde a yok %a%)\cf0 \
+ /* -----------------------------------------------------------------------------\
+  ORNEK16:  maa\uc0\u351 \u305 n\u305 n son 2 hanesi 00 olmayanlar\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE maas NOT LIKE '%00';\
+/* -----------------------------------------------------------------------------\
+  ORNEK17:  maa\uc0\u351 \u305 n\u305 n \cf4 4000 olmayanlar\uc0\u305 \cf0  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE maas \cf4 NOT LIKE 4000\cf0 ;\
+ /* -----------------------------------------------------------------------------\
+  ORNEK18: maa\uc0\u351 \u305  \cf4 5 haneli\cf0  olanlar\uc0\u305  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE maas LIKE '\cf4 _____\cf0 ';\
+  /* -----------------------------------------------------------------------------\
+  ORNEK19: maa\uc0\u351 \u305 n\u305 n  \cf4 5 haneli olmayanlar\uc0\u305 \cf0  listeleyiniz\
+    SELECT * FROM personel\
+    WHERE maas \cf4 NOT LIKE '_____\cf0 ';\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0 /* -----------------------------------------------------------------------------\
+  ORNEK20: 1. harfi A ve 7.harfi A olan personeli listeleyiniz.\
+  SELECT * FROM personel\
+  WHERE isim LIKE '\cf2 A
+\f1\b \cf9 _____
+\f0\b0 \cf2 a
+\f1\b \cf3 %
+\f0\b0 \cf0 ';  (\cf2 1. Harf A\cf0  \cf9 sonraki 5 tanesi farketmez\cf0 , \cf2 7. Harf a\cf3 , sonras\uc0\u305  da farketmez\cf0  )\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0    \
+/* ======================= SELECT - REGEXP_LIKE ================================\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     Daha karma\uc0\u351 \u305 k pattern ile sorgulama i\u351 lemi i\'e7in REGEXP_LIKE kullan\u305 labilir.  \
+    REGEXP_LIKE(sutun_ad\uc0\u305 , \'91pattern[] \'91, \'91c\'92 ] ) \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0      
+\f0\b0  CREATE TABLE kelimeler
+\f1\b \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0         kelime VARCHAR2(50) NOT NULL,\
+    INSERT INTO kelimeler VALUES (1012, 'h9t', 3);\
+    INSERT INTO kelimeler VALUES (1013, 'hoot', 4);\
+    INSERT INTO kelimeler VALUES (1014, 'haaat', 5);\
+ /* -----------------------------------------------------------------------------\
+  ORNEK21: \cf3 \uc0\u304 \'e7erisinde\cf0  \cf2 'hi' \cf0 bulunan \cf3 kelimeleri \cf0 listeleyeniz\
+    SELECT * FROM kelimeler\
+    WHERE \cf3 REGEXP_LIKE(kelime\cf0 , \cf2 'hi\cf0 ');  \
+/* -----------------------------------------------------------------------------\
+  ORNEK22\cf8 : \uc0\u304 \'e7erisinde\cf0  
+\f1\b \cf6 'ot' veya 'at'
+\f0\b0 \cf0  \cf8 bulunan kelimeleri\cf0  listeleyeniz\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     -- VEYA i\uc0\u351 lemi i\'e7in | karakteri kullan\u305 l\u305 r.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0      SELECT * FROM kelimeler\
+    WHERE \cf8 REGEXP_LIKE(kelime\cf0 , \cf6 'at|ot'\cf0 );\
+/* -----------------------------------------------------------------------------\
+  ORNEK23\cf8 : \uc0\u304 \'e7erisinde\cf0  \cf9 'ot' veya 'at'\cf0  \cf8 bulunan kelimeleri\cf0  \cf2 b\'fcy\'fck-k\'fc\'e7\'fck harfe dikkat\
+  etmeksizin\cf0  listeleyeniz\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3      -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.\
+     -- 'i' => incase-sentisitive demektir.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0     SELECT * FROM kelimeler\
+    WHERE \cf8 REGEXP_LIKE(kelime
+\f1\b \cf9 , 'at|ot'
+\fs24 \cf2 , 'i'
+\f0\b0\fs22 \cf0 );    \
+    /* -----------------------------------------------------------------------------\
+ ORNEK24: 'ho' veya 'hi' ile \cf6 ba\uc0\u351 layan\cf0  kelimeleri b\'fcy\'fck-k\'fc\'e7\'fck harfe dikkat etmeksizin listeleyeniz\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3      
+\f1\b -- Ba\uc0\u351 lang\u305 c\u305  g\'f6stermek i\'e7in ^ karakteri kullan\u305 l\u305 r
+\f0\b0 .\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     SELECT * FROM kelimeler\
+    WHERE REGEXP_LIKE(kelime, '
+\f1\b\fs28 \cf6 ^
+\f0\b0\fs22 \cf0 hi|
+\f1\b\fs28 \cf6 ^
+\f0\b0\fs22 \cf0 ho', 'i');     \
+/* -----------------------------------------------------------------------------\
+  ORNEK25: Sonu 't' veya 'm' ile \cf6 bitenleri\cf0  b\'fcy\'fck-k\'fc\'e7\'fck harfe dikkat etmeksizin listeleyeniz\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3      
+\f1\b -- Biti\uc0\u351 i g\'f6stermek i\'e7in $ karakteri kullan\u305 l\u305 r.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0     SELECT * FROM kelimeler\
+    WHERE REGEXP_LIKE(kelime, 't
+\f1\b\fs28 \cf6 $
+\f0\b0\fs22 \cf0 |m
+\f1\b\fs28 \cf6 $'
+\f0\b0\fs22 \cf0 , 'i');   \
+\
+/* -----------------------------------------------------------------------------\
+  ORNEK26: h ile ba\uc0\u351 lay\u305 p t ile biten 3 harfli kelimeleri b\'fcy\'fck-k\'fc\'e7\'fck harfe \
+  dikkat etmeksizin listeleyeniz\
+    SELECT * FROM kelimeler\
+WHERE REGEXP_LIKE(kelime
+\f1\b \cf6 , 'h\cf2 [a-zA-Z0-9]\cf6 t');
+\f0\b0 \cf0   (h ile ba\uc0\u351 la t ile bit \cf2 arada bir adet b\'fct\'fcn harf ve rakamlardan biri olabilir)\cf0  (Farkl\uc0\u305  bi g\'f6sterim)\
+/* -----------------------------------------------------------------------------\
+  ORNEK27: \uc0\u304 lk harfi h, son harfi t olup \cf2 2.harfi a veya i olan\cf0  3 harfli \
+  kelimelerin t\'fcm bilgilerini sorgulayal\uc0\u305 m.\
+    SELECT * FROM kelimeler\
+    WHERE REGEXP_LIKE (kelime, 'h
+\f1\b\fs24 \cf2 [ai]
+\f0\b0\fs22 \cf0 t');\
+/* -----------------------------------------------------------------------------\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0   ORNEK28: \cf2 \uc0\u304 \'e7inde m veya i veya e olan kelimelerin\cf0  t\'fcm bilgilerini listeleyiniz.\
+    SELECT * FROM kelimeler\
+    WHERE REGEXP_LIKE (kelime, '
+\f1\b \cf2 [mie](*)
+\f0\b0 \cf0 ');  ( [ ] parantezi i\'e7ine veya l\uc0\u305  se\'e7enekler yaz\u305 l\u305 r, herhangi bir harfi demek i\'e7in * kullan\u305 l\u305 r)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  /* -----------------------------------------------------------------------------\
+  ORNEK29: \cf4 a veya s ile\cf0  \cf2 ba\uc0\u351 layan\cf0  kelimelerin t\'fcm bilgilerini listeleyiniz.\
+    SELECT * FROM kelimeler\
+    WHERE REGEXP_LIKE (kelime, '
+\f1\b\fs24 \cf2 ^
+\fs22 \cf4 [as]
+\f0\b0 \cf0 ');\
+/* -----------------------------------------------------------------------------\
+  ORNEK30: i\'e7erisinde \cf4 en az 2 adet\cf0  \cf6 oo\cf0  bar\uc0\u305 d\u305 ran kelimelerin t\'fcm bilgilerini listeleyiniz.\
+    SELECT *  FROM kelimeler\
+    WHERE REGEXP_LIKE (kelime, '\cf6 [o]
+\f1\b\fs24 \cf4 \{2\}
+\f0\b0\fs22 \cf0 ');\
+     /* ============================== UPDATE SET===================== \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     -- UPDATE tablo_ad\uc0\u305 \
+    -- SET sutun1 = yeni_deger1, sutun2 = yeni_deger2,...  \
+    -- WHERE ko\uc0\u351 ul;\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 /* -----------------------------------------------------------------------------\
+  ORNEK1: \cf8 vergi_no\'92su 101 olan tedarikcinin ismini\cf0  \cf2 'LG' olarak g\'fcncelleyeniz\cf3 .\cf0  \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     UPDATE\cf0  tedarikciler    (UPDATE i\uc0\u351 lemi yap\u305 lacak)\
+    \cf2 SET firma_ismi = 'LG'     (\cf8 vergi_no su 101 olan yerdekinin\cf2  firma_isim ini LG olarak set et, )\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     \cf8 WHERE vergi_no = 101;\
+\cf0     /* -----------------------------------------------------------------------------\
+  ORNEK2: Tedarikciler tablosundak t\'fcm \cf8 firma isimlerini 'Samsung' olarak g\'fcncelleyeniz\cf0 . \
+    UPDATE tedarikciler\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf8     SET firma_ismi = 'SAMSUNG'\cf0 ;\
+   /* -----------------------------------------------------------------------------\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3  -- Tablonun i\'e7eri\uc0\u287 ini siler.. DELETE FROM tedarikciler;     -- DROP TABLE tabloyu siler.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0     /* -----------------------------------------------------------------------------\
+ \
+ ORNEK3: \cf3 vergi_no\'92su 102 olan \cf9 tedarikcinin\cf3  \cf2 ismini 'Samsung'\cf0  \cf2 ve irtibat_ismi\'92ni \
+  'Ali Veli' olarak g\'fcncelleyeniz. \
+\cf0     UPDATE \cf9 tedarikciler\
+\cf0     \cf2 SET firma_ismi = 'Samsung'\cf0 , \cf2 irtibat_ismi =' Ali Veli'\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     WHERE vergi_no = 102\cf0 ;\
+/* -----------------------------------------------------------------------------\
+  ORNEK4: \cf2 firma_ismi Samsung olan\cf0  \cf3 tedarikcinin\cf0  \cf8 irtibat_ismini 'Ay\uc0\u351 e Y\u305 lmaz' \
+  olarak g\'fcncelleyiniz.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     UPDATE \cf3 tedarikciler\cf0 \
+    \cf8 SET irtibat_ismi = 'Ayse Yilmaz'\
+\cf0     
+\f1\b \cf2 WHERE firma_ismi = 'Samsung';
+\f0\b0 \cf0     \
+/* -----------------------------------------------------------------------------\
+  ORNEK5: urunler tablosundaki 'Phone' de\uc0\u287 erlerini Telefon olarak g\'fcncelleyiniz.\
+    UPDATE urunler\
+    SET urun_isim='Telefon'\
+    WHERE urun_isim='Phone';  (\'fcr\'fcn_isim I phone olanlar\uc0\u305  Telefon olarak set et) \
+/* -----------------------------------------------------------------------------\
+  ORNEK6: urunler tablosundaki urun_id de\uc0\u287 eri 1004'ten b\'fcy\'fck olanlar\u305 n urun_id\
+  de\uc0\u287 erlerini bir artt\u305 r\u305 n\u305 z\
+     UPDATE urunler           \
+     \cf8 SET urun_id = urun_id + 1  \cf2 ( \'fcr\'fcn_id si 104 ten b\'fcy\'fck olanlar\uc0\u305 n\cf8  \'fcr\'fcn_id de\uc0\u287 erini, 1 fazlas\u305 na ata)\
+\cf0      \cf2 WHERE urun_id > 1004 \
+\cf0  /* ----------------------------------------------------------------------------\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0   ORNEK7: urunler tablosundaki t\'fcm \'fcr\'fcnlerin urun_id de\uc0\u287 erini ted_vergino \
+  sutun de\uc0\u287 erleri ile toplayarak g\'fcncelleyiniz.\
+  \cf2 UPDATE urunler  (t\'fcm deyince WHERE yok)\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf3   SET urun_id = urun_id + ted_vergino;   (\'fcr\'fcn_id yi \'fcr\'fcn_id+ted_vergino ya ata)\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0 /*-----------------------------------------------------------------------------\cf3 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  ORNEK8: \cf3 urunler tablosundan\cf0  \cf11 Ali Bak\'92in aldigi\cf0  \cf8 urunun ismini\cf2 , tedarikci \
+ tablosunda\cf0  \cf12 irtibat_ismi 'Adam Eve' olan\cf0  \cf13 firman\uc0\u305 n ismi (firma_ismi) ile\cf0  
+\f1\b degistiriniz.\
+UPDATE \cf3 de\uc0\u287 i\u351 ecek verinin tablosu\cf0 \
+SET \cf8 de\uc0\u287 i\u351 ecek verinin ismi
+\f0\b0 \cf0  
+\f1\b =(SELECT \cf13 yeni verinin esas ismi\cf0  \cf2 FROM yeni tablo\cf0  \cf12 WHERE yeni verinin \uc0\u351 \'f6yle \u351 \'f6yle olan\u305 =verisi)\
+
+\f0\b0 \cf0 WHERE de\uc0\u287 i\u351 ecek s\'fctun=veri\
+UPDATE \cf3 urunler\cf0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf0 SET\cf8  urun_isim
+\f0\b0 \cf0  = (SELECT \cf13 firma_ismi\cf0  \cf2 FROM tedarikciler\cf0   \cf12 WHERE irtibat_ismi = 'Adam Eve'\cf0 )\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf11     WHERE musteri_isim = 'Ali Bak'
+\f0\b0 \cf0 ; \
+\pard\pardeftab720\ri0\sl276\slmult1\sa120\partightenfactor0
+\cf0 /*------------------------------------------------------------------------------\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  ORNEK9: Laptop satin alan musterilerin ismini, Apple\'92in irtibat_isim'i ile \
+ degistirin\
+    UPDATE urunler\
+    SET musteri_isim = (SELECT irtibat_ismi FROM tedarikciler WHERE firma_ismi ='Apple')\
+    WHERE urun_isim = 'Laptop';\
+(parantez d\uc0\u305 \u351 \u305 , \'fcr\'fcnler tablosundan \'fcr\'fcn_isim I Laptop olan musteri_isim i se\'e7, bunu alttakiyle Update et\
+Parantez i\'e7i,tedarik\'e7iler tablosundan firma_isim I Apple olan s\'fctunun irtibat_isim ini se\'e7 )\
+/* ============================== DELETE ===================================  */\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     -- DELETE FROM tablo_ad\uc0\u305 ;  Tablonun t\'fcm i\'e7er\u287 ini siler.\
+    -- Bu komut bir DML komutudur. Dolay\uc0\u305 s\u305 yla devam\u305 nda WHERE gibi c\'fcmlecikler kullan\u305 labilir.\
+    -- DELETE FROM tablo_ad\uc0\u305 \
+    -- WHERE sutun_adi = veri;
+\f0\b0 \cf0      
+\f1\b \cf3 \
+         Se\'e7erek silmek i\'e7in WHERE Anahtar kelimesi kullan\uc0\u305 labilir. \
+\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 ===============================================================================\
+      CREATE TABLE ogrenciler\
+    ( id CHAR(3),\
+        isim VARCHAR2(50) );\
+    INSERT INTO ogrenciler VALUES(123, \'92Nesibe Yilmaz\'92, 'Hasan',75);\
+    INSERT INTO ogrenciler VALUES(124, \'91Mustafa Bak, 'Ayse',85);\
+-----------------------------------------------------------------------------*/ \
+ORNEK1: id'si 124 olan ogrenciyi siliniz.\
+ DELETE FROM ogrenciler\
+      WHERE id = 124;\
+/* -----------------------------------------------------------------------------\
+  ORNEK3: ismi Nesibe Yilmaz ve Mustafa Bak olan kay\uc0\u305 tlar\u305  silelim.       \
+      DELETE FROM ogrenciler\
+      WHERE isim = 'Nesibe Yilmaz' OR isim = 'Mustafa Bak';(ve dersek AND komutu)\
+   /* ----------------------------------------------------------------------------\
+  ORNEK5: id 'si 123'dan b\'fcy\'fck olan kay\uc0\u305 tlar\u305  silelim  \
+    DELETE FROM ogrenciler\
+    WHERE id>123;\
+  /* ----------------------------------------------------------------------------\
+  ORNEK6: id'si 123, 124  olanlar\uc0\u305  silelim.    \
+    DELETE FROM ogrenciler\
+    WHERE id IN(123,124);    \
+                    \
+\
+\
+\
+\
+\pard\pardeftab720\ri0\sl276\slmult1\sa120\partightenfactor0
+\cf0 /* ======================== DELETE - TRUCATE - DROP ============================   \
+\pard\pardeftab720\ri0\sl276\slmult1\sa120\partightenfactor0
+\cf3     1-) TRUNCATE komutu DELETE komutu gibi bir tablodaki verilerin tamam\uc0\u305 n\u305  siler.\
+    Ancak, se\'e7meli silme yapamaz. \'c7\'fcnk\'fc Truncate komutu DML de\uc0\u287 il DDL komutudur. \
+    2-) DELETE komutu beraberinde WHERE c\'fcmleci\uc0\u287 i kullan\u305 labilir. TRUNCATE ile kullan\u305 lmaz.\
+    3-) Delete komutu ile silinen veriler ROLLBACK Komutu ile kolayl\uc0\u305 kla geri al\u305 nabilir.\
+    4-) Truncate ile silinen veriler geri al\uc0\u305 nmas\u305  daha zordur. \
+    AncakTransaction y\'f6ntemi ile geri al\uc0\u305 nmas\u305  m\'fcmk\'fcn olabilir.\
+    5-) DROP komutu da bir DDL komutudur. Ancak DROP veriler ile tabloyu da \
+    siler. Silinen tablo Veritaban\uc0\u305 n\u305 n geri d\'f6n\'fc\u351 \'fcm kutusuna gider. ==============================================================================*/ \
+    DELETE FROM ogrenciler;  -- T\'fcm verileri sil.\
+    ROLLBACK;                -- Silinen Verileri geri getir.\
+    DROP TABLE ogrenciler;   -- Tabloyu siler ve Veritaban\uc0\u305 n\u305 n \'c7\'f6p kutusuna \
+                             -- g\'f6nderir. (DDL komutudur.)\
+   \
+   \
+\
+ \
+        \
+-- T\'fcm veriler hassas bir \uc0\u351 ekilde siler.\
+    TRUNCATE TABLE ogrenciler; \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  \
+/* =============================================================================\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     Tablolar aras\uc0\u305 nda ili\u351 ki var ise veriler nas\u305 l silinebilir?         \
+/*============================== ON DELETE CASCADE =============================\
+  Normalde Child I silmeden parent I silemiyoruz, Her defas\uc0\u305 nda \'f6nce child tablodaki verileri silmek yerine ON DELETE CASCADE silme \'f6zelli\u287 ini aktif hale getirebiliriz.\
+  Bunun i\'e7in FK olan sat\uc0\u305 r\u305 n en sonuna ON DELETE CASCADE komutunu yazmak yeterli\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0   ==============================================================================*/ \
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf0    CREATE TABLE talebeler\
+    (   id CHAR(3),  --PK\
+        CONSTRAINT talebe_pk PRIMARY KEY (id) );\
+    	\
+     CREATE TABLE notlar \
+    (  talebe_id char(3), --FK\
+        CONSTRAINT notlar_fk FOREIGN KEY (talebe_id) \
+        REFERENCES talebeler(id) ON DELETE CASCADE );\
+    DELETE FROM notlar\
+    WHERE talebe_id = 124; ( \'f6nce parent tan veri silebildik)\
+    \
+    DELETE FROM talebeler\
+    WHERE id = 124;\
+    \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0 /* ============================= SUBQUERIES ====================================\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3     SORGU i\'e7inde \'e7al\uc0\u305 \u351 an SORGUYA SUBQUERY (ALT SORGU) denilir.\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+
+\f0\b0 \cf0 CREATE TABLE personel \
+    ( id NUMBER(9), \
+        isim VARCHAR2(50), \
+        sehir VARCHAR2(50), \
+        maas NUMBER(20), \
+        sirket VARCHAR2(20)\
+    );\
+    \
+    CREATE TABLE sirketler\
+    (\
+        sirket_id NUMBER(9), \
+        sirket_adi VARCHAR2(20), \
+        personel_sayisi NUMBER(20)\
+    );\
+    \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0   ORNEK1: Personel say\uc0\u305 s\u305  15.000\'92den cok olan sirketlerin isimlerini ve bu \
+  sirkette calisan personelin isimlerini ve maa\uc0\u351 lar\u305 n\u305  listeleyin\
+    \cf13 SELECT isim,maas,sirket\cf0  \cf4 FROM personel\cf0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf6     WHERE sirket IN\cf0 (\cf8 SELECT sirket_adi\cf0  \cf3 FROM sirketler\cf0  \cf2 WHERE personel_sayisi > 15000\cf0 );\
+(-parantez i\'e7i-, \cf3 \uc0\u351 irketler tablosundaki\cf0  \cf2 personel_sayisi 15000 den b\'fcy\'fck olan\cf0  \cf8 \uc0\u351 irket_adi n\u305  se\'e7ip\cf0 ,\
+-Parantez d\uc0\u305 \u351 \u305 - \cf4 personel tablosundaki\cf0  \cf6 \uc0\u351 irket ile e\u351 le\u351 en verilerdeki\cf0  \cf13 isim maa\uc0\u351  ve \u351 irket I yaz)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  /* ----------------------------------------------------------------------------\
+  ORNEK2: sirket_id\'92si 101\'92den b\'fcy\'fck olan \uc0\u351 irket \'e7al\u305 \u351 anlar\u305 n\u305 n isim, maa\u351  ve \u351 ehirlerini listeleyiniz. \
+   SELECT isim, maas, sehir FROM personel\
+   WHERE sirket IN(SELECT sirket_adi FROM sirketler  WHERE sirket_id > 101);\
+(-parantez i\'e7i-, \uc0\u351 irketler tablosundan \u351 irket_id si 101 den b\'fcy\'fck olanlar\u305 n \u351 irket_adi n\u305  se\'e7ip\
+-Parantez d\uc0\u305 \u351 \u305 -personel tablosundaki \u351 irket ile e\u351 le\u351 en verilerdeki isim maas \u351 ehir yazd\u305 r )\
+  /* -----------------------------------------------------------------------------\
+  ORNEK3: Ankara\'92da personeli olan \uc0\u351 irketlerin \u351 irket id'lerini ve personel say\u305 lar\u305 n\u305  listeleyiniz.\
+   
+\f1\b \cf4 SELECT sirket_id, personel_sayisi
+\f0\b0 \cf0  
+\f1\b \cf14 FROM sirketler
+\f0\b0 \cf0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf4  ====sirket_id,personel_sayisi===
+\f1\b \cf14 ==sirketler tablosundan===
+\f0\b0 \cf0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3    WHERE sirket_adi IN (SELECT sirket
+\f0\b0 \cf0  
+\f1\b \cf13 FROM personel  WHERE sehir = 'Ankara');
+\f0\b0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0    ==
+\f1\b \cf3 E\uc0\u351 le\u351 me yeri==             \cf13 ==personel tablosunda \uc0\u351 ehir I Ankara olan==\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+
+\f0\b0 \cf0 /* ===================== AGGREGATE METOT KULLANIMI ===========================\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+\cf3     
+\f1\b Aggregate Metotlar\uc0\u305 (SUM,COUNT, MIN,MAX, AVG) Subquery i\'e7inde kullan\u305 labilir.\
+    Ancak, Sorgu tek bir de\uc0\u287 er d\'f6nd\'fcryor olmal\u305 d\u305 r.\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+
+\f0\b0 \cf0 ==============================================================================*/   \
+    ORNEK5: Her \uc0\u351 irketin ismini, personel say\u305 s\u305 n\u305  ve o \u351 irkete ait personelin\
+  toplam maa\uc0\u351 \u305 n\u305  listeleyen bir Sorgu yaz\u305 n\u305 z.\
+ \
+SELECT sirket_adi, personel_sayisi, \
+(
+\f1\b \cf2 SELECT SUM(maas
+\f0\b0 \cf0 )
+\f1\b \cf3  FROM personel
+\f0\b0 \cf0  
+\f1\b \cf3 WHERE sirket = sirketler.sirket_adi
+\f0\b0 \cf0 ) 
+\f1\b \cf14 AS toplam_maas
+\f0\b0 \cf0  \
+FROM sirketler;  ( 
+\f1\b \cf3 sirketler den
+\f0\b0 \cf0  sirket_adi, personel_sayisi n\uc0\u305  , ve 
+\f1\b \cf3 personel tablosuyla sirket ve sirket_adi e\uc0\u351 le\u351 en yerlerdeki
+\f0\b0 \cf0  
+\f1\b \cf2 maas lar\uc0\u305 n toplam\u305 n\u305 
+\f0\b0 \cf0 , 
+\f1\b \cf14 ad\uc0\u305 n\u305  (AS
+\f0\b0 ) 
+\f1\b toplam_maas
+\f0\b0 \cf0  olarak yazd\uc0\u305 r)\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0  \
+  -----------------------------------------------------------------------------*/\
+ORNEK5: Her \uc0\u351 irketin ismini, personel say\u305 s\u305 n\u305  ve o \u351 irkete ait personelin\
+  ortalama maa\uc0\u351 \u305 n\u305  listeleyen bir Sorgu yaz\u305 n\u305 z\
+     SELECT sirket_adi, personel_sayisi,\
+ (SELECT 
+\f1\b \cf13 ROUND
+\f0\b0 \cf0 (
+\f1\b \cf3 AVG
+\f0\b0 \cf0 (maas)) FROM personel WHERE  sirket = sirketler.sirket_adi) AS ort_maas\
+   .===
+\f1\b \cf3 ortalamay\uc0\u305 
+\f0\b0 \cf0  
+\f1\b \cf13 yuvarla
+\f0\b0 \cf0 ===       FROM sirketler;\
+ /* ----------------------------------------------------------------------------\
+  ORNEK6: Her \uc0\u351 irketin ismini, personel say\u305 s\u305 n\u305  ve o \u351 irkete ait personelin\
+  maksimum ve minumum maa\uc0\u351 \u305 n\u305  listeleyen bir Sorgu yaz\u305 n\u305 z.\
+    SELECT sirket_adi, personel_sayisi, (SELECT MAX(maas) FROM personel\
+                                        WHERE sirket_adi=sirket) AS max_maas, \
+                                        (SELECT MIN (maas) FROM personel \
+                                        WHERE sirket_adi=sirket) AS min_maas       \
+    FROM sirketler;   \
+/* -----------------------------------------------------------------------------\
+\pard\pardeftab720\ri0\sl276\slmult1\sa120\partightenfactor0
+\cf0   ORNEK7: Her sirketin id\'92sini, ismini ve toplam ka\'e7 \uc0\u351 ehirde bulundu\u287 unu \
+  listeleyen bir SORGU yaz\uc0\u305 n\u305 z.      
+\f1\b \cf13 ====say===
+\f0\b0 \cf0 \
+    SELECT sirket_id, sirket_adi, ( SELECT 
+\f1\b \cf13 COUNT
+\f0\b0 \cf0 (sehir) FROM personel\
+                                    WHERE sirket = sirketler.sirket_adi) AS sehir_sayisi\
+    FROM sirketler;\cf3 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     \cf0 /*=========================== EXISTS, NOT EXIST ================================\
+\pard\pardeftab720\ri0\sl276\slmult1\partightenfactor0
+
+\f1\b \cf0     \cf3 EXISTS operator\'fc bir Boolean operat\'f6rd\'fcr ve true - false de\uc0\u287 er d\'f6nd\'fcr\'fcr. \
+    EXISTS operator\'fc s\uc0\u305 kl\u305 kla Subquery'lerde sat\u305 rlar\u305 n do\u287 rulu\u287 unu test etmek \
+    i\'e7in kullan\uc0\u305 l\u305 r.\
+    \
+    E\uc0\u287 er bir subquery (altsorgu) bir sat\u305 r\u305  d\'f6nd\'fcr\'fcrse EXISTS operat\'f6r\'fc de TRUE \
+    de\uc0\u287 er d\'f6nd\'fcr\'fcr. Aksi takdirde, FALSE de\u287 er d\'f6nd\'fcrecektir.\
+    \
+    \'d6zellikle altsorgularda h\uc0\u305 zl\u305  kontrol i\u351 lemi ger\'e7ekle\u351 tirmek i\'e7in kullan\u305 l\u305 r\cf0 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 ==============================================================================*/\
+   \
+    CREATE TABLE mart_satislar\
+    (urun_id number(10), musteri_isim varchar2(50), urun_isim varchar2(50)  );\
+     CREATE TABLE nisan_satislar \
+    ( urun_id number(10),  musteri_isim varchar2(50), urun_isim varchar2(50)  );\
+    \
+    INSERT INTO mart_satislar VALUES (10, 'Mark', 'Honda');\
+    INSERT INTO mart_satislar VALUES (10, 'Mark', 'Honda');\
+    INSERT INTO mart_satislar VALUES (20, 'John', 'Toyota');\
+    \
+    INSERT INTO nisan_satislar VALUES (10, 'Hasan', 'Honda');\
+    INSERT INTO nisan_satislar VALUES (10, 'Kemal', 'Honda');\
+    INSERT INTO nisan_satislar VALUES (20, 'Ayse', 'Toyota');\
+??????????????????????????????????????????????????????????????????????????????\
+/* -----------------------------------------------------------------------------\
+  ORNEK1: MART VE N\uc0\u304 SAN aylar\u305 nda ayn\u305  URUN_ID ile sat\u305 lan \'fcr\'fcnlerin\
+  URUN_ID\'92lerini listeleyen ve ayn\uc0\u305  zamanda bu \'fcr\'fcnleri MART ay\u305 nda alan\
+  MUSTERI_ISIM 'lerini listeleyen bir sorgu yaz\uc0\u305 n\u305 z. \
+ -----------------------------------------------------------------------------*/       \
+    SELECT urun_id, musteri_isim FROM mart_satislar \
+    WHERE EXISTS  (SELECT urun_id FROM nisan_satislar \
+                  WHERE mart_satislar.urun_id = nisan_satislar.urun_id);\
+==eski yol===\
+-- SELECT urun_id IN(SELECT urun_id FROM nisan_satislar\
+   --          WHERE mart_satislar.urun_id = nisan_satislar.urun_id)\
+FROM mart_satislar;  \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f1\b \cf3    -- tablolara k\uc0\u305 sa isim vermek m\'fcmk\'fcnd\'fcr. B\'f6ylece sorgular\u305 m\u305 z\u305 n daha k\u305 sa \
+    -- g\'f6z\'fckmesini sa\uc0\u287 labiliriz.\
+    \
+    -- AS  -> bir sutuna k\uc0\u305 sa isim veriyor.\
+    -- Bir sorgu i\'e7erisinde  tabloya da k\uc0\u305 sa isim vermek m\'fcmk\'fcn. \
+    -- tablo_Adi k\uc0\u305 sa_isim\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+
+\f0\b0 \cf0 \
+/* -----------------------------------------------------------------------------\
+  ORNEK2: Her iki ayda da sat\uc0\u305 lan \'fcr\'fcnlerin URUN_ISIM'lerini ve bu \'fcr\'fcnleri\
+  N\uc0\u304 SAN ay\u305 nda sat\u305 n alan MUSTERI_ISIM'lerini listeleyen bir sorgu yaz\u305 n\u305 z. \
+ -----------------------------------------------------------------------------*/\
+ \
+    SELECT urun_isim, musteri_isim FROM nisan_satislar nisan\
+    \
+    WHERE EXISTS  (SELECT urun_id FROM mart_satislar mart\
+                  WHERE mart.urun_isim = nisan.urun_isim);\
+ \
+ /* ----------------------------------------------------------------------------\
+  ORNEK3: Her iki ayda da ortak olarak sat\uc0\u305 lmayan \'fcr\'fcnlerin URUN_ISIM'lerini \
+  ve bu \'fcr\'fcnleri N\uc0\u304 SAN ay\u305 nda sat\u305 n alan MUSTERI_ISIM'lerini listeleyiniz. \
+ -----------------------------------------------------------------------------*/\
+    SELECT urun_isim, musteri_isim FROM nisan_satislar nisan\
+    \
+    WHERE NOT EXISTS  (SELECT urun_id FROM mart_satislar mart\
+                      WHERE mart.urun_isim = nisan.urun_isim);\
+ \
+       \
+ /*===================== IS NULL, IS NOT NULL, COALESCE ========================\
+    \cf3 \
+    IS NULL, ve IS NOT NULL BOOLEAN operat\'f6rleridir. Bir ifadenin NULL olup \
+    olmad\uc0\u305 \u287 \u305 n\u305  kontrol ederler.  \
+    \
+    COALESCE ise bir fonksiyondur ve i\'e7erisindeki parameterelerden NULL olmayan\
+    ilk ifadeyi d\'f6nd\'fcr\'fcr. E\uc0\u287 er ald\u305 \u287 \u305  t\'fcm ifadeler NULL ise NULL d\'f6nd\'fcr\'fcr\'fcr.\
+    \
+    sutun_adi = COALESCE(ifade1, ifade2, .....ifadeN)\cf0 \
+    \
+==============================================================================*/\
+\
+    CREATE TABLE insanlar \
+    (\
+        ssn CHAR(9),\
+        isim VARCHAR2(50), \
+        adres VARCHAR2(50) \
+    );\
+\
+    INSERT INTO insanlar VALUES('123456789', 'Ali Can', 'Istanbul');\
+    INSERT INTO insanlar VALUES('234567890', 'Veli Cem', 'Ankara');\
+    INSERT INTO insanlar VALUES('345678901', 'Mine Bulut', 'Izmir');\
+    INSERT INTO insanlar (ssn, adres) VALUES('456789012', 'Bursa');\
+    INSERT INTO insanlar (ssn, adres) VALUES('567890123', 'Denizli');\
+    INSERT INTO insanlar (adres) VALUES('Sakarya');\
+    INSERT INTO insanlar (ssn) VALUES('999111222');\
+    /* ----------------------------------------------------------------------------\
+    ORNEK1: isim 'i NULL olanlar\uc0\u305  sorgulay\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/     \
+    SELECT * FROM insanlar\
+    WHERE isim IS NULL;     (null olmayanlar i\'e7in IS NOT NULL)\
+        \
+/* ----------------------------------------------------------------------------\
+  ORNEK3: isim 'i NULL olan ki\uc0\u351 ilerin isim'ine NO NAME atay\u305 n\u305 z. \
+-----------------------------------------------------------------------------*/   \
+    UPDATE insanlar\
+    SET isim = 'NO NAME'\
+    WHERE isim IS NULL;\
+    \
+/* ----------------------------------------------------------------------------\
+  ORNEK4:   isim 'i NULL olanlara 'Henuz isim girilmedi'\
+            adres 'i NULL olanlara 'Henuz adres girilmedi'\
+            ssn 'i NULL olanlara ' no ssn' atayal\uc0\u305 m.\
+-----------------------------------------------------------------------------*/    \
+   UPDATE insanlar\
+   SET isim = COALESCE (isim, 'Hen\'fcz isim girilmedi'),\
+       adres = COALESCE (adres, 'Hen\'fcz adres girilmedi'),\
+       ssn= COALESCE (ssn, 'No SSN');\
+       \
+    \
+/*================================ ORDER BY  ===================================\
+   ORDER BY c\'fcmleci\uc0\u287 i bir SORGU deyimi i\'e7erisinde belli bir SUTUN\'92a g\'f6re \
+   SIRALAMA yapmak i\'e7in kullan\uc0\u305 l\u305 r.\
+   \
+   Syntax\
+   -------\
+      ORDER BY sutun_adi ASC   -- ARTAN\
+      ORDER BY sutun_adi DESC  -- AZALAN\
+==============================================================================*/       \
+    CREATE TABLE kisiler \
+    (\
+        ssn CHAR(9) PRIMARY KEY,\
+        isim VARCHAR2(50), \
+        soyisim VARCHAR2(50), \
+        maas NUMBER,\
+        adres VARCHAR2(50) \
+    );\
+   /* ----------------------------------------------------------------------------\
+  ORNEK1: kisiler tablosunu adres'e g\'f6re s\uc0\u305 ralayarak sorgulay\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/ \
+ \
+    SELECT * FROM kisiler\
+    ORDER BY adres;   --- ASC gibi s\uc0\u305 rad\u305 .\
+\
+/* ----------------------------------------------------------------------------\
+  ORNEK2: kisiler tablosunu maas'a g\'f6re s\uc0\u305 ralayarak sorgulay\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/  \
+    SELECT * FROM kisiler\
+    ORDER BY maas;  \
+ \
+ /* ----------------------------------------------------------------------------\
+  ORNEK3: kisiler tablosunu maas'a g\'f6re AZALAN s\uc0\u305 rada sorgulay\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/ \
+    SELECT * FROM kisiler\
+    ORDER BY maas DESC;  -- Azalan\
+ \
+/* ----------------------------------------------------------------------------\
+  ORNEK4: ismi Mine olanlar\uc0\u305 , SSN'e g\'f6re AZALAN s\u305 rada sorgulay\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/\
+    SELECT * FROM kisiler\
+    WHERE isim = 'Mine'\
+    ORDER BY ssn DESC;\
+/* ----------------------------------------------------------------------------\
+  ORNEK5: soyismi 'i Bulut olanlar\uc0\u305  isim s\u305 ral\u305  olarak sorgulay\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/ \
+    SELECT * FROM kisiler\
+    WHERE soyisim = 'Bulut'\
+    ORDER BY 2;                 -- isim'e g\'f6re s\uc0\u305 ralanm\u305 \u351 \
+     \
+       \
+/*====================== L\uc0\u304 M\u304 T======================\cf3 \
+\
+  \
+\cf0   \
+/* ----------------------------------------------------------------------------\
+  ORNEK1: MAA\uc0\u350 '\u305  en y\'fcksek 3 ki\u351 inin bilgilerini listeleyen sorguyu yaz\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/\
+    SELECT * FROM kisiler\
+    ORDER BY maas DESC\
+    Limit 3;\
+    \
+/* ----------------------------------------------------------------------------\
+  ORNEK2: MAA\uc0\u350 '\u305  en D\'dc\u350 \'dcK 2 ki\u351 inin bilgilerini listeleyen sorguyu yaz\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/\
+    SELECT * FROM kisiler\
+    ORDER BY maas ASC\
+   Limit 2;\
+    \
+/* ----------------------------------------------------------------------------\
+  ORNEK3: MAA\uc0\u350 'a g\'f6re s\u305 ralamada 4. 5. 6. ki\u351 ilerin bilgilerini listeleyen \
+  sorguyu yaz\uc0\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/     \
+    SELECT * FROM kisiler\
+    ORDER BY maas DESC\
+Limit 3,3;     \'97 ilk 3 veriyi atla sonraki 3 veriyi al\
+    \cf3    /*============================= GROUP BY =====================================\
+\cf0     \
+    \cf3 GROUP BY c\'fcmleci\uc0\u287 i bir SELECT ifadesinde sat\u305 rlar\u305 , sutunlar\u305 n de\u287 erlerine \
+    g\'f6re \'f6zet olarak gruplamak i\'e7in kullan\uc0\u305 l\u305 r. \
+   \
+    GROUP BY c\'fcmlece\uc0\u287 i her grup ba\u351 \u305 na bir sat\u305 r d\'f6nd\'fcr\'fcr. \
+    \
+    GROUP BY genelde, AVG(),COUNT(),MAX(),MIN() ve SUM() gibi aggregate \
+    fonksiyonlar\uc0\u305  ile birlikte kullan\u305 l\u305 r.\
+    \
+\cf0 ==============================================================================*\
+      \
+    CREATE TABLE manav \
+    (\
+        isim varchar2(50), \
+        urun_adi varchar2(50), \
+        urun_miktari number(9) \
+    );\
+    \
+    INSERT INTO manav VALUES( 'Ali', 'Elma', 5);\
+    INSERT INTO manav VALUES( 'Ayse', 'Uzum', 4);\
+    INSERT INTO manav VALUES( 'Ali', '', 2);\
+    \
+/* -----------------------------------------------------------------------------\
+  ORNEK1: kisi ismine g\'f6re sat\uc0\u305 lan toplam meyve miktarlar\u305 n\u305  g\'f6steren sorguyu \
+  yaz\uc0\u305 n\u305 z.\
+------------------------------------------------------------------------------*/  \
+    SELECT isim, SUM(urun_miktari) AS toplam_urun \
+    FROM manav\
+    GROUP BY isim;\
+   \
+/* ----------------------------------------------------------------------------\
+  ORNEK2: sat\uc0\u305 lan meyve t\'fcr\'fcne (urun_adi) g\'f6re urun alan ki\u351 i say\u305 s\u305 n\u305  g\'f6steren\
+  sorguyu yaz\uc0\u305 n\u305 z. NULL olarak girilen meyveyi listelemesin.\
+-----------------------------------------------------------------------------*/ \
+    -- GROUP by ile birlikte WHERE c\'fcmleci\uc0\u287 i kullan\u305 labilir.\
+        \
+    SELECT urun_adi, COUNT(isim) AS kisi_sayisi\
+    FROM manav\
+    WHERE urun_adi IS NOT NULL\
+    GROUP BY urun_adi;\
+    \
+    SELECT * FROM manav;\
+    \
+   \
+/* ----------------------------------------------------------------------------\
+  ORNEK3: sat\uc0\u305 lan meyve t\'fcr\'fcne (urun_adi) g\'f6re sat\u305 lan (urun_miktari )MIN ve \
+  MAX urun miktarlarini, MAX urun miktarina g\'f6re s\uc0\u305 ralayarak listeyen sorguyu \
+  yaz\uc0\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/ \
+    SELECT urun_adi,MIN(urun_miktari) min_miktar, MAX(urun_miktari) maks_miktar\
+    FROM manav\
+    WHERE urun_adi IS NOT NULL\
+    GROUP BY urun_adi\
+    ORDER BY MAX(urun_miktari) DESC;\
+    \
+/* ----------------------------------------------------------------------------\
+  ORNEK4: kisi ismine ve urun ad\uc0\u305 na g\'f6re sat\u305 lan \'fcr\'fcnlerin toplam\u305 n\u305  \
+  grupland\uc0\u305 ran ve isime g\'f6re ters s\u305 ras\u305 da listeyen sorguyu yaz\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/ \
+     SELECT isim, urun_adi, SUM(urun_miktari) as toplam_miktar\
+     FROM manav\
+     WHERE urun_adi IS NOT NULL\
+     GROUP BY isim, urun_adi\
+     ORDER BY isim DESC;\
+     \
+/* ----------------------------------------------------------------------------\
+  ORNEK5: kisi ismine ve urun ad\uc0\u305 na g\'f6re sat\u305 lan \'fcr\'fcnlerin toplam\u305 n\u305  bulan ve\
+  ve bu toplam de\uc0\u287 eri 3 ve fazlas\u305  olan kay\u305 tlar\u305  toplam urun miktarlarina g\'f6re\
+  ters siralayarak listeyen sorguyu yaz\uc0\u305 n\u305 z.\
+ -----------------------------------------------------------------------------*/  \
+     SELECT isim, urun_adi, SUM(urun_miktari) as toplam_miktar\
+     FROM manav\
+     GROUP BY isim, urun_adi\
+     HAVING SUM(urun_miktari) >= 3\
+     ORDER BY SUM(urun_miktari) DESC;\
+     \cf3 \
+    -- AGGREGATE fonksiyonlar\uc0\u305  ile ilgili bir ko\u351 ul koymak i\'e7in GROUP BY'dan \
+    -- sonra HAVING c\'fcmleci\uc0\u287 i kullan\u305 l\u305 r.\
+\cf0  \
+ /* ----------------------------------------------------------------------------\
+  ORNEK6: sat\uc0\u305 lan urun_adi'na g\'f6re MAX urun say\u305 lar\u305 n\u305  s\u305 ralayarak listeyen \
+  sorguyu yaz\uc0\u305 n\u305 z. NOT: Sorgu, sadece MAKS urun_miktari MIN urun_miktar\u305 na \
+  e\uc0\u351 it olmayan kay\u305 tlar\u305  listelemelidir.\
+ -----------------------------------------------------------------------------*/    \
+     SELECT urun_adi, MAX(urun_miktari)\
+     FROM manav\
+     GROUP BY urun_adi\
+     HAVING MAX(urun_miktari) <> MIN(urun_miktari)\
+     ORDER BY MAX(urun_miktari);\
+\
+\
+ /*============================= DISTINCT =====================================\
+    \
+    \cf3 DISTINCT c\'fcmleci\uc0\u287 i bir SORGU ifadesinde benzer olan sat\u305 rlar\u305  flitrelemek\
+    i\'e7in kullan\uc0\u305 l\u305 r. Dolay\u305 s\u305 yla se\'e7ilen sutun yada sutunlar i\'e7in benzersiz veri\
+    i\'e7eren sat\uc0\u305 rlar olu\u351 turmaya yarar.\
+   \
+    SYNTAX\
+    -------\
+    SELECT DISTINCT sutun_adi1, sutun_adi2, satin_adi3\
+    FROM  tablo_ad\uc0\u305 ;\
+\cf0      \
+/* ----------------------------------------------------------------------------\
+  ORNEK1: sat\uc0\u305 lan farkl\u305  meyve t\'fcrlerinin say\u305 s\u305 n\u305  listeyen sorguyu yaz\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/   \
+    \
+    SELECT COUNT(DISTINCT urun_adi) AS urun_sayisi \
+    FROM manav;\
+\
+/* -----------------------------------------------------------------------------\
+  ORNEK2: sat\uc0\u305 lan meyve ve isimlerin farkl\u305  olanlar\u305 n\u305  listeyen sorguyu yaz\u305 n\u305 z.\
+------------------------------------------------------------------------------*/\
+     SELECT DISTINCT urun_adi,isim   -- 2 sutun icin beraber degerlendirirek\
+                                     -- benzerli olanlar\uc0\u305  cikariyor.\
+     FROM manav; \
+     \
+/* ----------------------------------------------------------------------------\
+  ORNEK3: sat\uc0\u305 lan meyvelerin urun_mikarlarinin benzersiz  olanlar\u305 n\u305 n \
+  toplamlarini listeyen sorguyu yaz\uc0\u305 n\u305 z.\
+-----------------------------------------------------------------------------*/     \
+     SELECT SUM(DISTINCT urun_miktari) AS urun_sayisi \
+     FROM manav;\
+      \
+     \
+     \
+       \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3    /*==================== SET OPERATORLERI: UNION, UNION ALL======================\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     \
+    \cf3 UNION, UNION ALL, INTERSECT, ve MINUS gibi SET operatorleri yardimiyla  \
+    \'c7oklu Sorgular birlestirilebilirler.\
+    UNION :  Bir SET operatorudur. 2 veya daha fazla Sorgu ifadesinin sonuc \
+    kumelerini birlesitirerek tek bir sonuc kumesi olusturur.    \
+   \
+    NOT:  Birle\uc0\u351 ik olan olan Sorgu ifadesinin veri t\'fcr\'fc di\u287 er sorgulardaki \
+    ifadelerin veri t\'fcr\'fc ile uyumlu olmal\uc0\u305 d\u305 r.\
+    \
+    Syntax:\
+    ----------\
+    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1\
+    UNION\
+    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;\
+    \
+    NOT: UNION operatoru SADECE benzersi degerleri al\uc0\u305 r. Benzerli verileri almak\
+    i\'e7in UNION ALL kullan\uc0\u305 l\u305 r.\
+\cf0 ==============================================================================*/ \
+  \
+    CREATE TABLE personel \
+    (\
+        id NUMBER(9), \
+        isim VARCHAR2(50), \
+        sehir VARCHAR2(50), \
+        maas NUMBER(20), \
+        sirket VARCHAR2(20),\
+        CONSTRAINT personel_pk PRIMARY KEY(id)\
+    );\
+    \
+    INSERT INTO personel VALUES(123456789, 'Ali Yilmaz', 'Istanbul', 5500, 'Honda');\
+    INSERT INTO personel VALUES(234567890, 'Veli Sahin', 'Istanbul', 4500, 'Toyota');\
+    INSERT INTO personel VALUES(345678901, 'Mehmet Ozturk', 'Ankara', 3500, 'Honda'); \
+    INSERT INTO personel VALUES(456789012, 'Mehmet Ozturk', 'Izmir', 6000, 'Ford');\
+    INSERT INTO personel VALUES(567890123, 'Mehmet Ozturk', 'Ankara', 7000, 'Tofas');\
+    INSERT INTO personel VALUES(453445611, 'Veli Sahin', 'Ankara', 4500, 'Ford');\
+    INSERT INTO personel VALUES(123456710, 'Hatice Sahin','Bursa', 4200, 'Honda');\
+/* -----------------------------------------------------------------------------\
+  ORNEK1: Maasi 4000\'92den cok olan isci isimlerini ve 5000 liradan fazla maas \
+  alinan sehirleri gosteren sorguyu yaziniz\
+------------------------------------------------------------------------------*/\
+    \
+    SELECT isim AS isim_veya_sehir, maas\
+    FROM personel\
+    WHERE maas > 4000\
+    UNION ALL                  -- UNION ALL kullan\uc0\u305 l\u305 rsa tekrarli veriler elenmez.\
+    SELECT sehir, maas \
+    FROM personel\
+    WHERE maas > 5000;\
+\
+   \
+/* -----------------------------------------------------------------------------\
+  ORNEK2: Mehmet Ozturk ismindeki kisilerin aldigi maaslari ve Istanbul\'92daki \
+  personelin maaslarini y\'fcksekten a\'e7a\uc0\u287 a do\u287 ru s\u305 ralayarak bir tabloda gosteren \
+  sorguyu yaziniz.    \
+------------------------------------------------------------------------------*/  \
+    \
+    SELECT maas,isim AS isim_veya_sehir\
+    FROM personel\
+    WHERE isim = 'Mehmet Ozturk'\
+    UNION\
+    SELECT maas,sehir\
+    FROM personel\
+    WHERE sehir = 'Istanbul'\
+    ORDER BY maas DESC;\
+    \
+      \
+/*======================== FARKLI TABLOLARDAN BIRLESTIRME ====================*/   \
+    \
+    CREATE TABLE personel_bilgi \
+    (\
+        id NUMBER(9), \
+        tel char(10) UNIQUE , \
+        cocuk_sayisi NUMBER(2), \
+        CONSTRAINT fk_personel FOREIGN KEY (id) REFERENCES personel(id) \
+    ); \
+    \
+    INSERT INTO personel_bilgi VALUES(123456789, '5302345678' , 5);\
+    INSERT INTO personel_bilgi VALUES(234567890, '5422345678', 4);\
+    INSERT INTO personel_bilgi VALUES(345678901, '5354561245', 3); \
+    INSERT INTO personel_bilgi VALUES(456789012, '5411452659', 3);\
+    INSERT INTO personel_bilgi VALUES(567890123, '5551253698', 2);\
+    INSERT INTO personel_bilgi VALUES(453445611, '5524578574', 2);\
+    INSERT INTO personel_bilgi VALUES(123456710, '5537488585', 1);\
+\
+/* -----------------------------------------------------------------------------\
+  ORNEK4: id\'92si 123456789 olan personelin Personel tablosundan sehir ve \
+  maasini, personel_bilgi tablosundan da tel ve cocuk sayisini yazdirin  \
+------------------------------------------------------------------------------*/    \
+    SELECT sehir AS sehir_tel, maas AS maas_cocukSayisi\
+    FROM personel\
+    WHERE id = 123456789\
+    UNION\
+    SELECT tel, cocuk_sayisi\
+    FROM personel_bilgi\
+    WHERE id = 123456789;\
+    \
+    -- sehir ile tel, maas ile cocuk ayni sutunda birlesti\uc0\u287 i icin veri tipleri\
+    -- uygun olmalidir.\
+     \
+/*========================= SET OPERATORLERI: INTERSECT ========================\
+    \'97 ***************** MYSQL DE \uc0\u304 NTERSECT YER\u304 NE UN\u304 ON KULLANACA\u286 IZ************\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     INTERSECT operarotu 2 veya daha fazla Sorgu ifadesinin sonuclarini \
+    dondurmek icin kullanilir. Ancak, intersect SADECE tum sorgularin ortak \
+    verilerini (kesimlerini) dondurur. \
+    \
+    Syntax:\
+    ----------\
+    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1\
+    INTERSECT\
+    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     \
+/* -----------------------------------------------------------------------------\
+  ORNEK5: Personel tablosundan Istanbul veya Ankara\'92da calisanlarin id\'92lerini\
+  sorgulayiniz. \
+ \
+  Personel_bilgi tablosundan 2 veya 3 cocugu olanlarin id lerini sorgulayiniz.\
+  Bu iki sorguyu INTERSECT ile birlestiriniz.\
+------------------------------------------------------------------------------*/\
+    \
+    SELECT id FROM personel\
+    WHERE sehir IN('Istanbul','Ankara')\
+    INTERSECT\
+    SELECT id FROM personel_bilgi\
+    WHERE cocuk_sayisi IN (2,3);\
+  \
+  \
+/* -----------------------------------------------------------------------------\
+  ORNEK6: Honda,Ford ve Tofas\'92ta calisan ortak isimde personel varsa listeleyin\
+------------------------------------------------------------------------------*/  \
+    \
+    SELECT isim\
+    FROM personel\
+    WHERE sirket = 'Honda'\
+    INTERSECT\
+    SELECT isim\
+    FROM personel\
+    WHERE sirket = 'Ford'\
+    INTERSECT\
+    SELECT isim\
+    FROM personel\
+    WHERE sirket = 'Tofas';\
+  \
+/* -----------------------------------------------------------------------------\
+  ORNEK7: Toyota ve Ford sirketlerinde ayni maasi alan personel isimlerini\
+  listeleyin\
+------------------------------------------------------------------------------*/    \
+    SELECT isim, maas\
+    FROM personel\
+    WHERE sirket = 'Toyota'\
+    INTERSECT\
+    SELECT isim, maas\
+    FROM personel\
+    WHERE sirket = 'Ford';\
+   \
+          \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3     \
+    \
+   \
+   \cf0   ORNEK8: 5000\'92den az maas alan ve Honda calisani olmayanlar\uc0\u305 n bilgilerini\
+  listeleyen bir sorgu yaziniz. \
+------------------------------------------------------------------------------*/ \
+   (maasi 5000 den az olanlar ile sirketi Honda olmayanlari (!=) sec)\
+    SELECT isim,maas, sirket \
+    FROM personel\
+    WHERE maas < 5000 \
+    INTERSECT\
+    SELECT isim, maas ,sirket\
+    FROM personel\
+    WHERE sirket != 'Honda';\
+    \
+\cf3 \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0     \cf3 \
+    /*============================== JOIN \uc0\u304 SLEMLER\u304  ===============================\
+\cf0     \
+    \cf3 Set Operatorleri (Union,Intersect,Minus) farkl\uc0\u305  tablolardaki sutunlari \
+    birlestirmek kullanilir.\
+    \
+    Join islemleri ise farkl\uc0\u305  Tablolari birlestirmek icin kullanilir. Diger \
+    bir ifade ile farkli tablolardaki secilen sutunlar ile yeni bir tablo \
+    olusturmak icin kullanilabilir.\
+    \
+    JOIN islemleri Iliskisel Veritabanlari icin cok onemli bir ozelliktir. \'c7unku\
+    Foreign Key'ler ile iliskili olan tablolardan istenilen sutunlari cekmek \
+    icin JOIN islemleri kullanilabilir.\
+    \
+   \
+\
+ ORACLE SQL'de 4 Cesit Join isemi kullanilabilmektedir.\
+    1) FULL JOIN:  Tablodaki tum sonuclari gosterir\'97 MYSQL DE FULL JO\uc0\u304 N YOK. Onun yerine\
+Left join union right join yap\uc0\u305 larak iki tablodaki t\'fcm veriler birle\u351 tirilir\
+    2) INNER JOIN:  Tablolardaki ortak olan sonuc kumesini gosterir\
+    3) LEFT JOIN:  Ilk tabloda (Sol) olup digerinde olmayan sonuclari gosterir\
+    4) RIGHT JOIN: Sadece Ikinci tabloda olan tum sonuclari gosterir\
+\cf0    \
+==============================================================================*/   \
+    CREATE TABLE sirketler \
+    (\
+        sirket_id NUMBER(9), \
+        sirket_isim VARCHAR2(20)\
+    );\
+    \
+    INSERT INTO sirketler VALUES(100, 'Toyota');\
+    INSERT INTO sirketler VALUES(101, 'Honda');\
+    INSERT INTO sirketler VALUES(102, 'Ford');\
+    INSERT INTO sirketler VALUES(103, 'Hyundai');\
+    \
+    CREATE TABLE siparisler\
+    (\
+        siparis_id NUMBER(9),\
+        sirket_id NUMBER(9), \
+        siparis_tarihi DATE\
+    );\
+    \
+    INSERT INTO siparisler VALUES(11, 101, '17-Apr-2020');\
+    INSERT INTO siparisler VALUES(22, 102, '18-Apr-2020');\
+    INSERT INTO siparisler VALUES(33, 103, '19-Apr-2020');\
+    INSERT INTO siparisler VALUES(44, 104, '20-Apr-2020');\
+    INSERT INTO siparisler VALUES(55, 105, '21-Apr-2020');\
+\
+    \
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf3   \cf0  /*=============================== INNER JOIN  ==================================\
+\cf3     \
+    Iki tablonun kesisim kumesi ile yeni bir tablo olusturmak icin kullanilir.\
+    \
+    Syntax\
+    -----------\
+    SELECT sutun1,sutun2....sutunN\
+    FROM tablo1 \
+    INNER JOIN tablo2\
+    ON tablo1.sutun = tablo2.sutun;\cf0   \
+/* -----------------------------------------------------------------------------\
+  ORNEK2: Iki Tabloda sirket_id\'92si ayni olanlarin sirket_ismi, siparis_id ve \
+  siparis_tarihleri listeleyen bir sorgu yaziniz.\
+------------------------------------------------------------------------------*/  \
+    \
+    SELECT s.sirket_isim, sp.siparis_id, sp.siparis_tarihi, sp.sirket_id\
+    FROM sirketler s\
+    INNER JOIN siparisler sp\
+    ON s.sirket_id = sp.sirket_id;\
+    \
+    \cf3 -- INNER JOIN ile sadece iki tabloki ortak olan satilar secilir.\
+    -- Diger ifadeyle iki tablodaki ortak olan sirket_id degerleri icin ilgili \
+    -- sutunlar listenir.\
+    \
+    -- INNER anahtar kelimesi opsiyoneldir\cf0 .\
+    \
+        \
+/*=============================== LEFT JOIN  ==================================\
+    \cf3 \
+    LEFT JOIN, 1. tablodan (sol tablo) SELECT ile ifade edilen sutunlara ait tum\
+    satirlari getirir. \
+    Ancak, diger tablodan sadece ON ile belirtilen kosula uyan satirlari getirir. \
+        \
+    Syntax\
+    -----------\
+    SELECT sutun1,sutun2....sutunN\
+    FROM tablo1 \
+    LEFT JOIN tablo2\
+    ON tablo1.sutun = tablo2.sutun;\cf0             \
+/* -----------------------------------------------------------------------------\
+  ORNEK3: sirketler tablosundaki tum sirketleri ve bu sirketlere ait olan \
+  siparis_id ve siparis_tarihleri listeleyen bir sorgu yaziniz.\
+------------------------------------------------------------------------------*/   \
+    \
+    SELECT s.sirket_isim, sp.siparis_id, sp.siparis_tarihi, sp.sirket_id, s.sirket_id\
+    FROM sirketler s\
+    LEFT JOIN siparisler sp\
+    ON s.sirket_id = sp.sirket_id;\
+    \
+    -- Left Join\'92de ilk tablodaki tum satirlar gosterilir.\
+    -- Ilk tablodaki satirlara 2.tablodan kosula uyan ortak satirlar gosterilir\
+    -- ancak ortak olmayan kisimlar bos kalir\
+          \
+/*=============================== RIGHT JOIN  ==================================\
+    \cf3 \
+    RIGHT JOIN, 2. tablodan (sag tablo) SELECT ile ifade edilen sutunlara ait tum\
+    satirlari getirir. \
+    Ancak, diger tablodan sadece ON ile belirtilen kosula uyan satirlari getirir. \
+        \
+    Syntax\
+    -----------\
+    SELECT sutun1,sutun2....sutunN\
+    FROM tablo1 \
+    RIGHT JOIN tablo2\
+    ON tablo1.sutun = tablo2.sutun;\cf0       \
+/* -----------------------------------------------------------------------------\
+  ORNEK4: siparisler tablosundaki tum siparis_id ve siparis_tarihleri ile \
+  bunlara kar\uc0\u351 \u305 l\u305 k gelen sirket_isimlerini listeleyen bir sorgu yaziniz.\
+------------------------------------------------------------------------------*/   \
+     \
+    SELECT s.sirket_isim, sp.siparis_id, sp.siparis_tarihi, sp.sirket_id\
+    FROM sirketler s\
+    RIGHT JOIN siparisler sp\
+    ON s.sirket_id = sp.sirket_id;\
+    \
+\cf3     -- Right Join\'92de 2. tablodaki tum satirlar gosterilir.\
+    -- 2 tablodaki satirlara 1.tablodan kosula uyan ortak satirlar gosterilir\
+    -- ancak ortak olmayan kisimlar bos kalirir.\
+======JO\uc0\u304 N \'d6RNEKLER=====	\
+	\cf0 CREATE TABLE bolumler (\
+      bolum_id   NUMBER(2) CONSTRAINT bolum_pk PRIMARY KEY,\
+      bolum_isim VARCHAR2(14),\
+      konum      VARCHAR2(13)\
+    );\
+    \
+    INSERT INTO bolumler VALUES (10,'MUHASABE','IST');\
+    INSERT INTO bolumler VALUES (20,'MUDURLUK','ANKARA');\
+    INSERT INTO bolumler VALUES (30,'SATIS','IZMIR');\
+    INSERT INTO bolumler VALUES (40,'ISLETME','BURSA');\
+    INSERT INTO bolumler VALUES (50,'DEPO', 'YOZGAT');\
+\uc0\u8203 \
+    CREATE TABLE personel (\
+      personel_id   NUMBER(4) CONSTRAINT personel_pk PRIMARY KEY,\
+      personel_isim VARCHAR2(10),\
+      meslek        VARCHAR2(9),\
+      mudur_id      NUMBER(4),\
+      ise_baslama   DATE,\
+      maas          NUMBER(7,2),\
+      bolum_id      NUMBER(2) \
+    );\
+  \
+    INSERT INTO personel VALUES (7369,'AHMET','KATIP\'92,1111,\'9217-12-1980',800,20);\
+    INSERT INTO personel VALUES (7499,'BAHATTIN','SATIS\'92,1222,\'9220-2-1981',1600,30);\
+    INSERT INTO personel VALUES (7521,'NESE','SATIS\'92,1222,\'9222-2-1981',1250,30);\
+    INSERT INTO personel VALUES (1111,\'92MUZAFFER','MUDUR',7839,'2-4-1981',2975,20);\
+    INSERT INTO personel VALUES (7654,'MUHAMMET','SATIS\'92,1222,\'9228-9-1981',1250,30);\
+    INSERT INTO personel VALUES (1222,\'92EMINE','MUDUR',7839,'1-5-1981',2850,30);\
+    INSERT INTO personel VALUES (1333,\'92HARUN','MUDUR',7839,'9-6-1981', 2450,10);\
+    INSERT INTO personel VALUES (7788,'MESUT','ANALIST\'92,1111,\'9213-07-87',3000,20);\
+    INSERT INTO personel VALUES (7839,'SEHER','BASKAN',NULL,'17-11-1981',5000,10);\
+    INSERT INTO personel VALUES (7844,'DUYGU','SATIS\'92,1222,\'928-9-1981',1500,30);\
+    INSERT INTO personel VALUES (7876,'ALI','KATIP\'92,1111,\'9213-07-87',1100,20);\
+    INSERT INTO personel VALUES (7900,'MERVE','KATIP\'92,1222,\'923-12-1981',950,30);\
+    INSERT INTO personel VALUES (7902,'NAZLI','ANALIST\'92,1111,\'923-12-1981',3000,20);\
+    INSERT INTO personel VALUES (7934,'EBRU','KATIP\'92,1333,\'9223-1-1982',1300,10);\
+    INSERT INTO personel VALUES (7956,'SIBEL','MIMAR\'92,1333,\'9229-1-1991',3300,60);\
+    INSERT INTO personel VALUES (7933,'ZEKI','MUHENDIS\'92,1333,\'9226-1-1987',4300,60);\
+     \
+ /* -----------------------------------------------------------------------------\
+  ORNEK1: SATIS ve MUHASABE bolumlerinde calisan personelin isimlerini ve \
+  bolumlerini, once bolum sonra isim s\uc0\u305 ral\u305  olarak listeleyiniz\
+------------------------------------------------------------------------------*/ \
+\
+	SELECT P.personel_isim, B.bolum_isim \
+	FROM bolumler B \
+	JOIN personel P \
+	ON B.bolum_id = P.bolum_id\
+	WHERE B.bolum_id IN(10,30)\
+	ORDER BY B.bolum_isim, p.personel_isim;\
+\
+  \
+/* -----------------------------------------------------------------------------\
+  ORNEK2: SATIS,ISLETME ve DEPO bolumlerinde calisan personelin isimlerini,  \
+  bolumlerini ve ise_baslama tarihlerini isim s\uc0\u305 ral\u305  olarak listeleyiniz. \
+  NOT: calisani olmasa bile bolum ismi gosterilmelidir.\
+------------------------------------------------------------------------------*/  \
+\
+	 SELECT B.bolum_isim, P.personel_isim, P.ise_baslama\
+	 FROM bolumler B\
+	 LEFT JOIN personel P\
+	 ON P.bolum_id=B.bolum_id\
+	 WHERE B.bolum_\uc0\u305 d IN (40,30,50)\
+	 ORDER BY B.bolum_isim;\
+\
+/* -----------------------------------------------------------------------------\
+  ORNEK3: T\'fcm bolumlerde calisan personelin isimlerini, bolum isimlerini ve \
+  maaslarini bolum ve maas siraali listeleyiniz. \
+  NOT: calisani olmasa bile bolum ismi gosterilmelidir.\
+------------------------------------------------------------------------------*/  \
+\
+    SELECT b.bolum_isim, p.personel_isim, p.maas\
+    FROM   personel p\
+    FULL JOIN bolumler b \
+    ON  p.bolum_id = b.bolum_id\
+    ORDER BY b.bolum_id,p.maas DESC;\
+\
+/* -----------------------------------------------------------------------------\
+  ORNEK4: SATIS ve MUDURLUK bolumlerinde calisan personelin maaslari 2000'den \
+  buyuk olanlarinin isim,bolum ve maas bilgilerini bolume ve isme gore\
+  siralayarak listeleyiniz.\
+------------------------------------------------------------------------------*/   \
+    SELECT b.bolum_isim, p.personel_isim, p.maas \
+    FROM bolumler b\
+    JOIN personel p \
+    ON b.bolum_id = p.bolum_id AND p.maas >= 2000\
+    WHERE  b.bolum_id IN(20,30) \
+    ORDER BY b.bolum_id,p.personel_isim;\
+ \
+/* -----------------------------------------------------------------------------\
+  ORNEK5: MUDUR'u harun veya Emine olan personelin bolumlerini,isimlerini,  \
+  maaslarini ve mudur isimlerini maas siral\uc0\u305  olarak (\'c7oktan aza) listeleyiniz.\
+------------------------------------------------------------------------------*/   \
+\
+    SELECT b.bolum_isim, p.personel_isim,p.maas, \
+                    (SELECT personel_isim FROM personel \
+                     WHERE  personel_id = p.mudur_id) as mudur_adi \
+    FROM bolumler b\
+    JOIN personel p \
+    ON b.bolum_id = p.bolum_id\
+    WHERE  p.mudur_id IN(1222,1333) \
+    ORDER BY p.maas DESC;\
+\cf3     \
+    /*=============================== ALTER TABLE \cf0 \
+    \cf3 \
+    ALTER TABLE  tabloda ADD, MODIFY, veya DROP/DELETE COLUMNS islemleri icin \
+    kullanilir.\
+    \
+    ALTER TABLE ifadesi tablolari yeniden isimlendirmek (RENAME) icin de\
+    kullanilir.\
+\pard\pardeftab720\ri0\sl276\slmult1\sa200\partightenfactor0
+\cf0    \
+==============================================================================*/\
+\
+    CREATE TABLE personel \
+    (\
+        id NUMBER(9), \
+        isim VARCHAR2(50), \
+        sehir VARCHAR2(50), \
+        maas NUMBER(20), \
+        sirket VARCHAR2(20),\
+        CONSTRAINT personel_pk PRIMARY KEY (id)\
+    );\
+\
+\
+    INSERT INTO personel VALUES(123456789, 'Ali Yilmaz', 'Istanbul', 5500, 'Honda');\
+   \
+/* -----------------------------------------------------------------------------\
+  ORNEK1: personel tablosuna ulke_isim adinda ve default degeri 'Turkiye' olan \
+  yeni bir sutun ekleyiniz.\
+------------------------------------------------------------------------------*/ \
+    \
+    ALTER TABLE personel\
+    ADD ulke_isim VARCHAR2(20) DEFAULT 'TURKIYE';\
+    \
+    select * from personel;\
+    \
+      \
+/* -----------------------------------------------------------------------------\
+  ORNEK2: personel tablosuna cinsiyet Varchar2(20) ve yas Number(3) seklinde \
+  yeni sutunlar ekleyiniz.\
+------------------------------------------------------------------------------*/  \
+    ALTER TABLE personel\
+    ADD (cinsiyet VARCHAR2(20), yas NUMBER(3));\
+    \
+/* -----------------------------------------------------------------------------\
+  ORNEK3: personel tablosundan yas sutununu siliniz. \
+------------------------------------------------------------------------------*/ \
+\
+    ALTER TABLE personel\
+    DROP COLUMN sirket;\
+    \
+/* -----------------------------------------------------------------------------\
+  ORNEK4: personel tablosundaki ulke_isim sutununun adini ulke_adi olarak \
+  degistiriniz. \
+------------------------------------------------------------------------------*/  \
+    ALTER TABLE personel\
+    RENAME COLUMN ulke_isim TO ulke_adi;\
+    \
+   \
+/* -----------------------------------------------------------------------------\
+  ORNEK5: personel tablosunun adini isciler olarak degistiriniz. \
+------------------------------------------------------------------------------*/  \
+    ALTER TABLE personel\
+    RENAME TO isciler;\
+  \
+    select * from isciler;\
+    \
+/* -----------------------------------------------------------------------------\
+  ORNEK6: isciler tablosundaki ulke_adi sutununa NOT NULL kisitlamasi ekleyiniz. \
+------------------------------------------------------------------------------*/ \
+    ALTER TABLE isciler\
+    MODIFY ulke_adi VARCHAR2(30) NOT NULL; -- Hme veri tipini degistirik hem de \
+                                           -- NOT NULL kisitlamasi ekledik.\
+    \
+    ALTER TABLE isciler\
+    MODIFY isim CHAR(100) ;     -- Veritipini CHAR(100) olarak degistirdik.\
+    \
+    ALTER TABLE isciler\
+    MODIFY maas CHECK (maas >= 3500);   -- Maas alt limit kisitlamasi atadik.\
+   \
+    INSERT INTO isciler VALUES(123452310, 'Hatice Sahin', 'Bursa', 3000,'Almanya', 'Kad\uc0\u305 n');\
+    \
+    \
+    \
+     \
+}
